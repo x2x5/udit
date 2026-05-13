@@ -1,6 +1,6 @@
 const styles = {
   section: 'max-w-4xl mx-auto px-6 py-16',
-  title: 'text-3xl font-bold text-gray-900 mb-2',
+  title: 'text-3xl font-bold text-heading mb-2',
   subtitle: 'text-sm text-muted mb-4',
   divider: 'w-16 h-1 bg-accent rounded mb-8',
   card: 'bg-card border border-border rounded-xl p-6',
@@ -36,7 +36,7 @@ function CmdCard({ cmd, desc, detail }) {
     <div className="bg-card border border-border rounded-xl p-5">
       <div className="flex items-center gap-3 mb-2">
         <Cmd>{cmd}</Cmd>
-        <span className="text-sm text-gray-900">{desc}</span>
+        <span className="text-sm text-heading">{desc}</span>
       </div>
       {detail && <p className="text-xs text-muted leading-relaxed">{detail}</p>}
     </div>
@@ -48,7 +48,7 @@ export default function Guide({ onBack }) {
     <div className="min-h-screen bg-surface">
       <div className="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between">
         <span className="text-accent font-bold text-lg">uDiT</span>
-        <button onClick={onBack} className="text-sm text-muted hover:text-gray-900 transition-colors cursor-pointer">&larr; 返回论文</button>
+        <button onClick={onBack} className="text-sm text-muted hover:text-heading transition-colors cursor-pointer">&larr; 返回论文</button>
       </div>
 
       {/* Hero */}
@@ -56,7 +56,7 @@ export default function Guide({ onBack }) {
         <div className="inline-flex items-center gap-2 bg-accent/10 text-accent-light text-xs font-mono px-4 py-1.5 rounded-full mb-6 border border-accent/20">
           写给初学者的指南
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
           前端工具到底在干什么
         </h1>
         <p className="text-muted max-w-2xl mx-auto text-sm">
@@ -72,14 +72,14 @@ export default function Guide({ onBack }) {
         <div className={styles.card}>
           <div className="font-mono text-sm text-muted leading-loose whitespace-pre">
             <span className="text-accent-light">udit/</span>
-            <br />  <span className="text-green-600">src/</span>              &lt;- <span className="text-gray-800">你写代码的地方</span>
+            <br />  <span className="text-green">src/</span>              &lt;- <span className="text-body">你写代码的地方</span>
             <br />    App.jsx        <span className="text-muted"># 网页内容（React 组件）</span>
             <br />    index.css      <span className="text-muted"># 样式</span>
             <br />    main.jsx       <span className="text-muted"># 入口文件</span>
-            <br />  <span className="text-green-600">public/</span>            &lt;- <span className="text-gray-800">静态文件（图片等）</span>
-            <br />  <span className="text-green-600">dist/</span>              &lt;- <span className="text-gray-800">打包后的成品（自动生成）</span>
-            <br />  <span className="text-green-600">package.json</span>       &lt;- <span className="text-gray-800">项目的"说明书"</span>
-            <br />  <span className="text-green-600">node_modules/</span>       &lt;- <span className="text-gray-800">下载好的工具包（自动生成）</span>
+            <br />  <span className="text-green">public/</span>            &lt;- <span className="text-body">静态文件（图片等）</span>
+            <br />  <span className="text-green">dist/</span>              &lt;- <span className="text-body">打包后的成品（自动生成）</span>
+            <br />  <span className="text-green">package.json</span>       &lt;- <span className="text-body">项目的"说明书"</span>
+            <br />  <span className="text-green">node_modules/</span>       &lt;- <span className="text-body">下载好的工具包（自动生成）</span>
           </div>
         </div>
       </section>
@@ -144,7 +144,7 @@ export default function Guide({ onBack }) {
           <div className={styles.card}>
             <div className="flex items-center gap-2 mb-3">
               <span className="text-2xl">📦</span>
-              <span className="text-gray-900 font-bold">npm</span>
+              <span className="text-heading font-bold">npm</span>
               <span className={styles.label}>包管理器</span>
             </div>
             <p className="text-xs text-muted leading-relaxed">
@@ -156,7 +156,7 @@ export default function Guide({ onBack }) {
           <div className={styles.card}>
             <div className="flex items-center gap-2 mb-3">
               <span className="text-2xl">⚡</span>
-              <span className="text-gray-900 font-bold">Vite</span>
+              <span className="text-heading font-bold">Vite</span>
               <span className={styles.label}>构建工具</span>
             </div>
             <p className="text-xs text-muted leading-relaxed">
@@ -169,7 +169,7 @@ export default function Guide({ onBack }) {
           <div className={styles.card}>
             <div className="flex items-center gap-2 mb-3">
               <span className="text-2xl">⚛️</span>
-              <span className="text-gray-900 font-bold">React</span>
+              <span className="text-heading font-bold">React</span>
               <span className={styles.label}>UI 框架</span>
             </div>
             <p className="text-xs text-muted leading-relaxed">
@@ -181,7 +181,7 @@ export default function Guide({ onBack }) {
           <div className={styles.card}>
             <div className="flex items-center gap-2 mb-3">
               <span className="text-2xl">🎨</span>
-              <span className="text-gray-900 font-bold">Tailwind CSS</span>
+              <span className="text-heading font-bold">Tailwind CSS</span>
               <span className={styles.label}>CSS 工具库</span>
             </div>
             <p className="text-xs text-muted leading-relaxed">
@@ -201,9 +201,9 @@ export default function Guide({ onBack }) {
           <div className="text-center space-y-4">
             <div className="text-xs text-muted">你直接打交道的</div>
             <div className="flex justify-center gap-3">
-              <span className="bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded-lg text-sm font-mono">npm run dev</span>
-              <span className="bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded-lg text-sm font-mono">npm run build</span>
-              <span className="bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded-lg text-sm font-mono">npm install</span>
+              <span className="bg-green/10 border border-green/30 text-green px-4 py-2 rounded-lg text-sm font-mono">npm run dev</span>
+              <span className="bg-green/10 border border-green/30 text-green px-4 py-2 rounded-lg text-sm font-mono">npm run build</span>
+              <span className="bg-green/10 border border-green/30 text-green px-4 py-2 rounded-lg text-sm font-mono">npm install</span>
             </div>
             <div className="text-accent text-lg">&darr; 调用了 &darr;</div>
             <div className="text-xs text-muted">背后实际干活的</div>
@@ -215,9 +215,9 @@ export default function Guide({ onBack }) {
             <div className="text-accent text-lg">&darr; 最终产出 &darr;</div>
             <div className="text-xs text-muted">浏览器真正运行的</div>
             <div className="flex justify-center gap-3">
-              <span className="bg-white border border-border text-gray-700 px-4 py-2 rounded-lg text-sm font-mono">index.html</span>
-              <span className="bg-white border border-border text-gray-700 px-4 py-2 rounded-lg text-sm font-mono">index.js</span>
-              <span className="bg-white border border-border text-gray-700 px-4 py-2 rounded-lg text-sm font-mono">index.css</span>
+              <span className="bg-white border border-border text-body px-4 py-2 rounded-lg text-sm font-mono">index.html</span>
+              <span className="bg-white border border-border text-body px-4 py-2 rounded-lg text-sm font-mono">index.js</span>
+              <span className="bg-white border border-border text-body px-4 py-2 rounded-lg text-sm font-mono">index.css</span>
             </div>
             <div className="text-xs text-muted mt-2">就是最普通的 HTML + JS + CSS，什么工具都不用也能跑</div>
           </div>

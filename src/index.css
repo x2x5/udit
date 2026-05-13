@@ -7,9 +7,25 @@
   --color-card: #ffffff;
   --color-border: #d1d5db;
   --color-muted: #6b7280;
+  --color-heading: #111827;
+  --color-body: #1f2937;
+  --color-green: #16a34a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-surface: #0f0f1a;
+    --color-card: #1a1a2e;
+    --color-border: #2a2a4a;
+    --color-muted: #9ca3af;
+    --color-accent-light: #a78bfa;
+    --color-heading: #f3f4f6;
+    --color-body: #d1d5db;
+    --color-green: #4ade80;
+  }
 }
 
 body {
   background: var(--color-surface);
-  color: #1f2937;
+  color: var(--color-body);
 }
