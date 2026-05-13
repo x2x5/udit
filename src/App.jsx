@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const ARCH_FIG = '/udit/images/6c0c087566e9554aac2b986525fb058d73cd39bc17adaca0d4ee95b2b9d4cec0.jpg'
 const ARCH_FIG2 = '/udit/images/acda007a34cb35de8467e3fe0555fe9cfd0e9550572e648345cbaa10dda18d7e.jpg'
 const PATCHIFY_FIG = '/udit/images/3d9b02b491461b939a6cee6836fe4a15b97807906c448f0ec01619d33b572357.jpg'
@@ -71,7 +73,7 @@ function Hero() {
         </div>
         <div className="mt-8 flex gap-4 justify-center">
           <a href="#architecture" className="bg-accent hover:bg-accent-light text-white px-6 py-2.5 rounded-lg font-medium transition-colors text-sm">
-            Explore the Paper →
+            Explore the Paper &rarr;
           </a>
           <a href="https://arxiv.org/abs/2212.09748" target="_blank" className="border border-border hover:border-accent/50 text-muted hover:text-white px-6 py-2.5 rounded-lg font-medium transition-colors text-sm">
             arxiv.org
@@ -105,7 +107,7 @@ function Architecture() {
           <Card>
             <h3 className="text-white font-semibold mb-2">Patchify</h3>
             <p className="text-sm text-muted leading-relaxed">
-              The spatial latent is divided into patches of size p×p (p ∈ {2,4,8}), linearly embedded into a sequence of T = (32/p)² tokens with hidden dimension d. Smaller p → more tokens → higher Gflops.
+              The spatial latent is divided into patches of size p×p (p ∈ {2,4,8}), linearly embedded into a sequence of T = (32/p)² tokens with hidden dimension d. Smaller p means more tokens and higher Gflops.
             </p>
           </Card>
           <Card>
@@ -199,7 +201,7 @@ function DesignSpace() {
           </Card>
           <Card>
             <img src={PATCHIFY_FIG} alt="Patchify illustration" className="rounded-lg border border-border w-full" />
-            <p className="text-xs text-muted mt-2">Figure 4: Patchify — spatial latent → patch sequence with positional embeddings.</p>
+            <p className="text-xs text-muted mt-2">Figure 4: Patchify converts spatial latent to patch sequence with positional embeddings.</p>
           </Card>
         </div>
       </div>
@@ -213,7 +215,7 @@ function Results() {
       <div className="grid md:grid-cols-2 gap-8">
         <Card className="md:col-span-2">
           <h3 className="text-white font-semibold mb-3">Gflops vs. FID</h3>
-          <p className="text-sm text-muted mb-4">12 DiT models trained across configs (S/B/L/XL) and patch sizes (2/4/8). Strong negative correlation: more Gflops → lower FID.</p>
+          <p className="text-sm text-muted mb-4">12 DiT models trained across configs (S/B/L/XL) and patch sizes (2/4/8). Strong negative correlation: more Gflops yields lower FID.</p>
           <img src={SCATTER_FIG} alt="Gflops vs FID" className="rounded-lg border border-border w-full" />
           <p className="text-xs text-muted mt-2">Figure 8: Transformer Gflops are strongly correlated with FID.</p>
         </Card>
@@ -303,7 +305,7 @@ function Takeaways() {
     },
     {
       title: 'Scaling works predictably',
-      desc: 'Increasing model depth/width (S→XL) and decreasing patch size (8→2) both improve FID monotonically. The scaling trend is clean and predictable, enabling compute-aware model selection.',
+      desc: 'Increasing model depth/width (S to XL) and decreasing patch size (8 to 2) both improve FID monotonically. The scaling trend is clean and predictable, enabling compute-aware model selection.',
     },
     {
       title: 'Latent space + Transformer = best of both',
@@ -330,17 +332,28 @@ function Takeaways() {
   )
 }
 
-function Footer() {
+import Guide from './Guide.jsx'
+
+function Footer({ onGuide }) {
   return (
     <footer className="border-t border-border py-8 text-center">
       <p className="text-xs text-muted">
         Built with React & Tailwind CSS · Understanding DiT (ICCV 2023)
       </p>
+      <button onClick={onGuide} className="text-xs text-accent hover:text-accent-light mt-3 transition-colors cursor-pointer">
+        ? 搞不懂 npm / vite 是啥？点这里
+      </button>
     </footer>
   )
 }
 
 export default function App() {
+  const [page, setPage] = useState('paper')
+
+  if (page === 'guide') {
+    return <Guide onBack={() => setPage('paper')} />
+  }
+
   return (
     <div className="min-h-screen bg-surface">
       <Nav />
@@ -349,7 +362,7 @@ export default function App() {
       <DesignSpace />
       <Results />
       <Takeaways />
-      <Footer />
+      <Footer onGuide={() => setPage('guide')} />
     </div>
   )
 }
