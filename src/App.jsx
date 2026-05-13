@@ -333,6 +333,23 @@ function Takeaways() {
 }
 
 import Guide from './Guide.jsx'
+import SimpleToTool from './SimpleToTool.jsx'
+
+function CompareLink({ onOpen }) {
+  return (
+    <section className="max-w-6xl mx-auto px-6 pb-8">
+      <button onClick={onOpen} className="w-full bg-card border-2 border-dashed border-border hover:border-accent/50 rounded-xl p-8 text-center transition-colors cursor-pointer group">
+        <div className="text-3xl mb-3">🔄</div>
+        <h3 className="text-heading font-bold text-lg mb-1 group-hover:text-accent transition-colors">
+          从写简单网页到用前端工具
+        </h3>
+        <p className="text-xs text-muted">
+          还在迷惑这些工具到底是干嘛的？点这里看直观对比
+        </p>
+      </button>
+    </section>
+  )
+}
 
 function Footer({ onGuide }) {
   return (
@@ -354,6 +371,10 @@ export default function App() {
     return <Guide onBack={() => setPage('paper')} />
   }
 
+  if (page === 'compare') {
+    return <SimpleToTool onBack={() => setPage('paper')} />
+  }
+
   return (
     <div className="min-h-screen bg-surface">
       <Nav />
@@ -362,6 +383,7 @@ export default function App() {
       <DesignSpace />
       <Results />
       <Takeaways />
+      <CompareLink onOpen={() => setPage('compare')} />
       <Footer onGuide={() => setPage('guide')} />
     </div>
   )
