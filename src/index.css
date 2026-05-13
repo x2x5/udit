@@ -2,14 +2,14 @@
 
 @theme {
   --color-accent: #8b5cf6;
-  --color-accent-light: #a78bfa;
-  --color-surface: #0f0f1a;
-  --color-card: #1a1a2e;
-  --color-border: #2a2a4a;
-  --color-muted: #9ca3af;
+  --color-accent-light: #7c3aed;
+  --color-surface: #f3f4f6;
+  --color-card: #ffffff;
+  --color-border: #d1d5db;
+  --color-muted: #6b7280;
 }
 
 body {
   background: var(--color-surface);
-  color: #e5e7eb;
+  color: #1f2937;
 }

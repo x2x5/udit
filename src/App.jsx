@@ -12,7 +12,7 @@ const COMPUTE_FIG = '/udit/images/c16b3a3b25728bc80306113775f3cc65690fd39b799297
 function Section({ id, title, children, className = '' }) {
   return (
     <section id={id} className={`max-w-6xl mx-auto px-6 py-24 ${className}`}>
-      <h2 className="text-3xl font-bold text-white mb-2">{title}</h2>
+      <h2 className="text-3xl font-bold text-gray-900 mb-2">{title}</h2>
       <div className="w-16 h-1 bg-accent rounded mb-10" />
       {children}
     </section>
@@ -41,7 +41,7 @@ function Nav() {
         <span className="text-accent font-bold text-lg">uDiT</span>
         <div className="flex gap-6 text-sm text-muted">
           {links.map(l => (
-            <a key={l.href} href={l.href} className="hover:text-white transition-colors">{l.label}</a>
+            <a key={l.href} href={l.href} className="hover:text-gray-900 transition-colors">{l.label}</a>
           ))}
         </div>
       </div>
@@ -56,7 +56,7 @@ function Hero() {
         <div className="inline-flex items-center gap-2 bg-accent/10 text-accent-light text-xs font-mono px-4 py-1.5 rounded-full mb-6 border border-accent/20">
           ICCV 2023
         </div>
-        <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-4">
+        <h1 className="text-5xl md:text-7xl font-bold text-gray-900 leading-tight mb-4">
           Scalable Diffusion Models<br />with <span className="text-accent">Transformers</span>
         </h1>
         <p className="text-lg text-muted mb-2">
@@ -75,7 +75,7 @@ function Hero() {
           <a href="#architecture" className="bg-accent hover:bg-accent-light text-white px-6 py-2.5 rounded-lg font-medium transition-colors text-sm">
             Explore the Paper &rarr;
           </a>
-          <a href="https://arxiv.org/abs/2212.09748" target="_blank" className="border border-border hover:border-accent/50 text-muted hover:text-white px-6 py-2.5 rounded-lg font-medium transition-colors text-sm">
+          <a href="https://arxiv.org/abs/2212.09748" target="_blank" className="border border-border hover:border-accent/50 text-muted hover:text-gray-900 px-6 py-2.5 rounded-lg font-medium transition-colors text-sm">
             arxiv.org
           </a>
         </div>
@@ -99,25 +99,25 @@ function Architecture() {
         </div>
         <div className="space-y-4">
           <Card>
-            <h3 className="text-white font-semibold mb-2">Latent Diffusion Pipeline</h3>
+            <h3 className="text-gray-900 font-semibold mb-2">Latent Diffusion Pipeline</h3>
             <p className="text-sm text-muted leading-relaxed">
               DiT operates in VAE latent space (downsample factor 8). For a 256×256 RGB image, the VAE encoder produces a 32×32×4 latent. DiT processes this latent — not raw pixels — then the VAE decoder reconstructs the image.
             </p>
           </Card>
           <Card>
-            <h3 className="text-white font-semibold mb-2">Patchify</h3>
+            <h3 className="text-gray-900 font-semibold mb-2">Patchify</h3>
             <p className="text-sm text-muted leading-relaxed">
               The spatial latent is divided into patches of size p×p (p ∈ {2,4,8}), linearly embedded into a sequence of T = (32/p)² tokens with hidden dimension d. Smaller p means more tokens and higher Gflops.
             </p>
           </Card>
           <Card>
-            <h3 className="text-white font-semibold mb-2">DiT Blocks</h3>
+            <h3 className="text-gray-900 font-semibold mb-2">DiT Blocks</h3>
             <p className="text-sm text-muted leading-relaxed">
               A sequence of N transformer blocks processes the token sequence. Each block incorporates conditioning on timestep t and class label c. The best variant uses adaLN-Zero — adaptive layer norm with zero-init residuals.
             </p>
           </Card>
           <Card>
-            <h3 className="text-white font-semibold mb-2">Decoder</h3>
+            <h3 className="text-gray-900 font-semibold mb-2">Decoder</h3>
             <p className="text-sm text-muted leading-relaxed">
               After the final DiT block, layer norm + linear decode maps each token back to a p×p×2C tensor (noise prediction ε_θ and covariance Σ_θ), then rearranged to original spatial layout.
             </p>
@@ -141,7 +141,7 @@ function DesignSpace() {
       <div className="grid md:grid-cols-2 gap-8">
         <div className="space-y-4">
           <Card>
-            <h3 className="text-white font-semibold mb-3">Patch Size</h3>
+            <h3 className="text-gray-900 font-semibold mb-3">Patch Size</h3>
             <p className="text-sm text-muted mb-4">Controls token count and Gflops without affecting parameters.</p>
             <div className="grid grid-cols-3 gap-3">
               {[2, 4, 8].map(p => (
@@ -153,7 +153,7 @@ function DesignSpace() {
             </div>
           </Card>
           <Card>
-            <h3 className="text-white font-semibold mb-3">Conditioning Mechanisms</h3>
+            <h3 className="text-gray-900 font-semibold mb-3">Conditioning Mechanisms</h3>
             <p className="text-sm text-muted mb-4">Four ways to inject timestep & class label conditioning into DiT blocks.</p>
             <div className="space-y-3">
               {[
@@ -172,7 +172,7 @@ function DesignSpace() {
         </div>
         <div className="space-y-4">
           <Card>
-            <h3 className="text-white font-semibold mb-3">Model Configurations</h3>
+            <h3 className="text-gray-900 font-semibold mb-3">Model Configurations</h3>
             <p className="text-sm text-muted mb-4">Following ViT model configs, scaling N, d, and attention heads jointly.</p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
@@ -187,7 +187,7 @@ function DesignSpace() {
                 </thead>
                 <tbody>
                   {configs.map(c => (
-                    <tr key={c.name} className="border-b border-border/50 text-white">
+                    <tr key={c.name} className="border-b border-border/50 text-gray-800">
                       <td className="py-3 pr-4 font-mono text-accent">{c.name}</td>
                       <td className="text-right py-3 px-2">{c.layers}</td>
                       <td className="text-right py-3 px-2">{c.hidden}</td>
@@ -214,26 +214,26 @@ function Results() {
     <Section id="results" title="Scaling Results">
       <div className="grid md:grid-cols-2 gap-8">
         <Card className="md:col-span-2">
-          <h3 className="text-white font-semibold mb-3">Gflops vs. FID</h3>
+          <h3 className="text-gray-900 font-semibold mb-3">Gflops vs. FID</h3>
           <p className="text-sm text-muted mb-4">12 DiT models trained across configs (S/B/L/XL) and patch sizes (2/4/8). Strong negative correlation: more Gflops yields lower FID.</p>
           <img src={SCATTER_FIG} alt="Gflops vs FID" className="rounded-lg border border-border w-full" />
           <p className="text-xs text-muted mt-2">Figure 8: Transformer Gflops are strongly correlated with FID.</p>
         </Card>
 
         <Card>
-          <h3 className="text-white font-semibold mb-3">Conditioning Comparison</h3>
+          <h3 className="text-gray-900 font-semibold mb-3">Conditioning Comparison</h3>
           <img src={COND_FIG} alt="Conditioning strategies" className="rounded-lg border border-border w-full mb-3" />
           <p className="text-xs text-muted">Figure 5: adaLN-Zero outperforms all other conditioning strategies at all training stages, while being the most compute-efficient.</p>
         </Card>
 
         <Card>
-          <h3 className="text-white font-semibold mb-3">Visual Scaling</h3>
+          <h3 className="text-gray-900 font-semibold mb-3">Visual Scaling</h3>
           <img src={SAMPLE_FIG} alt="Scaling visualization" className="rounded-lg border border-border w-full mb-3" />
           <p className="text-xs text-muted">Figure 7: Same latent noise, same label — increasing Gflops dramatically improves visual quality.</p>
         </Card>
 
         <Card className="md:col-span-2">
-          <h3 className="text-white font-semibold mb-3">State-of-the-Art on ImageNet 256×256</h3>
+          <h3 className="text-gray-900 font-semibold mb-3">State-of-the-Art on ImageNet 256×256</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -254,7 +254,7 @@ function Results() {
                   ['DiT-XL/2', '9.62', '6.85', '121.50', '0.67', '0.67'],
                   ['DiT-XL/2-G (cfg=1.5)', '2.27', '4.60', '278.24', '0.83', '0.57'],
                 ].map(row => (
-                  <tr key={row[0]} className={`border-b border-border/50 text-white ${row[0].startsWith('DiT-XL/2-G') ? 'bg-accent/5' : ''}`}>
+                  <tr key={row[0]} className={`border-b border-border/50 text-gray-800 ${row[0].startsWith('DiT-XL/2-G') ? 'bg-accent/5' : ''}`}>
                     <td className="py-3 pr-4 font-mono text-accent-light">{row[0]}</td>
                     {row.slice(1).map((v, i) => (
                       <td key={i} className={`text-right py-3 px-2 ${row[0].startsWith('DiT-XL/2-G') && i === 0 ? 'text-green-400 font-bold' : ''}`}>{v}</td>
@@ -268,7 +268,7 @@ function Results() {
         </Card>
 
         <Card className="md:col-span-2">
-          <h3 className="text-white font-semibold mb-3">Compute Efficiency</h3>
+          <h3 className="text-gray-900 font-semibold mb-3">Compute Efficiency</h3>
           <div className="grid md:grid-cols-2 gap-6 items-center">
             <div>
               <img src={COMPUTE_FIG} alt="Compute efficiency" className="rounded-lg border border-border w-full" />
@@ -323,7 +323,7 @@ function Takeaways() {
         {items.map(item => (
           <Card key={item.title}>
             <div className="w-8 h-1 bg-accent rounded mb-3" />
-            <h3 className="text-white font-semibold text-sm mb-2">{item.title}</h3>
+            <h3 className="text-gray-900 font-semibold text-sm mb-2">{item.title}</h3>
             <p className="text-xs text-muted leading-relaxed">{item.desc}</p>
           </Card>
         ))}
